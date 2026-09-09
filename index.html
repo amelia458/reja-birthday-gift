@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spidey Surprise for Reja! 🕷️🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1b 100%);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Web Pattern Background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle, rgba(226, 27, 60, 0.15) 10%, transparent 10.5%),
+        radial-gradient(circle, rgba(9, 132, 227, 0.15) 10%, transparent 10.5%);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      pointer-events: none;
+    }
+
+    .bg-spider {
+      position: absolute;
+      font-size: 30px;
+      user-select: none;
+      animation: spiderFloat 4s ease-in-out infinite alternate;
+      opacity: 0.7;
+    }
+
+    @keyframes spiderFloat {
+      0% { transform: translateY(0px) rotate(-5deg); }
+      100% { transform: translateY(-15px) rotate(10deg); }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .card {
+      background: rgba(18, 18, 34, 0.95);
+      border: 2px solid #e21b3c;
+      border-radius: 28px;
+      padding: 28px 20px;
+      box-shadow: 0 10px 30px rgba(226, 27, 60, 0.35);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .badge-tag {
+      background: #0984e3;
+      color: #ffffff;
+      padding: 6px 16px;
+      border-radius: 15px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: inline-block;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(9, 132, 227, 0.3);
+    }
+
+    .title-text {
+      font-size: 24px;
+      color: #ffffff;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.3px;
+    }
+
+    /* SLIDE 1: ENVELOPE */
+    .envelope-wrapper {
+      margin: 25px auto;
+      width: 140px;
+      height: 95px;
+      background: linear-gradient(135deg, #e21b3c, #b3122a);
+      border-radius: 20px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(226, 27, 60, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 2px solid #ffffff;
+    }
+
+    .envelope-wrapper:hover {
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    .heart-icon {
+      font-size: 42px;
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .sub-text {
+      font-size: 15px;
+      color: #74b9ff;
+      font-weight: 700;
+      margin-top: 15px;
+    }
+
+    /* SLIDE 2 & 3 & 4 STYLES */
+    .spidey-card {
+      background: linear-gradient(135deg, #18182e, #500612);
+      border-color: #0984e3;
+      box-shadow: 0 10px 30px rgba(9, 132, 227, 0.35);
+      display: none;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.88); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .mail-header {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.8;
+      border-bottom: 2px dashed rgba(255, 255, 255, 0.2);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      text-align: left;
+      background: rgba(0,0,0,0.25);
+      padding: 16px;
+      border-radius: 18px;
+    }
+
+    .btn-action {
+      display: inline-block;
+      background: #0984e3;
+      color: #ffffff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 25px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .btn-action:hover {
+      background: #74b9ff;
+      transform: translateY(-3deg) scale(1.04);
+    }
+
+    /* SLIDE 3: CAKE & LETTER */
+    .cake-container {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid #74b9ff;
+      margin: 10px auto 18px auto;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    .letter-box {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.7;
+      text-align: left;
+      margin-bottom: 20px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      max-height: 320px;
+      overflow-y: auto;
+      color: #f1f2f6;
+    }
+
+    .letter-box p {
+      margin-bottom: 12px;
+    }
+
+    /* SLIDE 4: MUSIC & GAMES */
+    .music-player {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(116, 185, 255, 0.3);
+    }
+
+    .game-box {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      padding: 18px 12px;
+      border: 2px dashed #e21b3c;
+      margin-bottom: 18px;
+    }
+
+    .game-title {
+      font-size: 16px;
+      color: #ff758f;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .target-btn {
+      font-size: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s ease;
+      outline: none;
+    }
+
+    /* Fast Web-Shooter Game */
+    #bossGameArea {
+      width: 100%;
+      height: 150px;
+      background: rgba(18, 18, 34, 0.85);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+      border: 1px solid #0984e3;
+    }
+
+    .moving-target {
+      position: absolute;
+      font-size: 30px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Floating Stickers -->
+  <div class="bg-spider" style="top: 8%; left: 8%;">🕷️</div>
+  <div class="bg-spider" style="top: 12%; right: 10%; animation-delay: 1s;">🕸️</div>
+  <div class="bg-spider" style="bottom: 10%; left: 10%; animation-delay: 2s;">🎂</div>
+  <div class="bg-spider" style="bottom: 12%; right: 8%; animation-delay: 1.5s;">🤍</div>
+
+  <div class="container">
+    <!-- SLIDE 1 -->
+    <div class="card" id="step1">
+      <span class="badge-tag">🕷️ Special Message!</span>
+      <div class="title-text">HALOO REJAAA!! 👋🏻</div>
+      <div class="envelope-wrapper" onclick="goToStep(2)">
+        <div class="heart-icon">✉️</div>
+      </div>
+      <div class="sub-text">Ada pesan rahasia buat kamu! 📲</div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="card spidey-card" id="step2">
+      <div class="title-text" style="color:#74b9ff; font-size:20px; margin-bottom:15px;">
+        📩 Incoming Web Mail
+      </div>
+      <div class="mail-header">
+        <strong>From:</strong> amell imut yang baik hati<br>
+        <strong>To:</strong> rejaa sii bokemm
+      </div>
+      <div style="font-size: 15px; margin-bottom: 20px; line-height: 1.5; font-weight: 600;">
+        Ada surat kejutan spesial ulang tahun yang udah dibuat khusus buat kamu! ✨
+      </div>
+      <button class="btn-action" onclick="goToStep(3)">Buka Suratnya! 💌</button>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="card spidey-card" id="step3">
+      <span class="badge-tag" style="background:#e21b3c;">🎉 Happy 18th Birthday!</span>
+      
+      <!-- Cute Cake Icon -->
+      <div class="cake-container">
+        🎂
+      </div>
+
+      <div class="letter-box">
+        <p style="font-weight:800; color:#74b9ff; font-size:15px; text-align:center; margin-bottom:14px;">
+          HAIIII REJAAAA, BARAKALLAH FII UMRIK YAAAAA!!!! 🎂✨
+        </p>
+        <p>cieee yang udah genap 18 tahunn, dann pastinya kamu yang sekarang ini, di lembaran baru yang kamu punya, kamu bisa jadi pribadi yang lebih baik lagi, punya semangat yang lebih tinggi, dan semakin kuat buat menghadapi segala tantangan di hari-hari kamu selanjutnya.</p>
+        <p>makasii yaaa udah mau berjuang selama 18 tahun ini buat menjalani hidup dengan sebaik-baiknya. Walaupun pasti masih ada salah dan kurangnya, tapi itu wajar banget, namanya juga manusiaa. yang paling keren, kamu nggak pernah benar-benar menyerah buat jalanin hari-hari kamu. Kamu tetap berusaha, tetap bertahan, dan masih bisa mengisi hari-hari kamu dengan senyuman. I am so proud of you, rejaa!!! 🤍✨</p>
+        <p>Dann pastinyaa, semoga di umur kamu yang sekarang ini kamu bisa menggapai semua wishlist dan hal-hal yang kamu impikan. Semoga Allah selalu kasih kemudahan di setiap jalan yang kamu pilih, melancarkan setiap langkah kamu, dan selalu melindungi kamu di mana pun kamu berada.</p>
+        <p>OIYAAA, jangan lupa buat selalu sayang sama diri kamu sendiri yaaa. Jangan terlalu keras sama diri sendiri, dan jangan pernah nyerah walaupun suatu saat semuanya terasa berat. Tetap kejar apa yang ingin kamu capai, terus tumbuh jadi versi terbaik dari diri kamu, dan nikmati setiap prosesnyaa.</p>
+        <p>Dan yang terakhir, aku harap kamu selalu dikelilingi orang-orang baik, orang-orang yang tulus, dan orang-orang yang benar-benar sayang sama kamu. Semoga di umur 18 ini ada banyak hal baik yang datang ke hidup kamu, banyak alasan buat tersenyum, dan semoga Allah selalu jaga kamu dalam setiap langkahmu🤍</p>
+      </div>
+
+      <button class="btn-action" onclick="goToStep(4)">Lanjut ke Lagu & Game! 🎵🎮</button>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="card spidey-card" id="step4">
+      <div class="title-text" style="color: #74b9ff; font-size: 21px;">Musik & Zone Game Reja! 🎧</div>
+
+      <!-- Music Player Box dengan Embed Lagu About You (The 1975) -->
+      <div class="music-player">
+        <div style="font-size: 14px; margin-bottom: 10px; color: #74b9ff; font-weight:800;">
+          🎵 The 1975 - About You 🎶
+        </div>
+        <audio id="bgMusic" controls style="width: 100%; height: 38px; border-radius: 12px;" autoplay loop>
+          <source src="https://files.catbox.moe/k3u3f7.mp3" type="audio/mpeg">
+          Browser kamu tidak mendukung audio player.
+        </audio>
+      </div>
+
+      <!-- GAME 1: Tangkap Cinta -->
+      <div class="game-box">
+        <div class="game-title">🕸️ Game 1: Tangkap Cinta Amell</div>
+        <div style="font-size: 14px; margin-bottom: 10px;">Skor: <span id="scoreText" style="color:#74b9ff; font-weight:bold;">0</span> / 10</div>
+        <button class="target-btn" id="targetBtn" onclick="catchHeart()">🤍</button>
+        <p id="winMsg1" style="display:none; color: #55efc4; font-weight: bold; margin-top: 8px; font-size: 13px;">
+          🎉 Level 1 Selesai! Kamu dapet semua cinta Amell!
+        </p>
+      </div>
+
+      <!-- GAME 2: TANTANGAN SPIDEY REFLEX -->
+      <div class="game-box" style="border-color:#0984e3;">
+        <div class="game-title" style="color:#74b9ff;">⚡ Game 2: Spidey Reflex Challenge!</div>
+        <div style="font-size: 13px; color:#ddd; margin-bottom: 8px;">
+          Tangkap target yang bergerak cepat 5x berturut-turut!
+        </div>
+        <div style="font-size: 14px; margin-bottom: 5px;">Tangkapan: <span id="bossScore" style="color:#ff758f; font-weight:bold;">0</span> / 5</div>
+        
+        <div id="bossGameArea">
+          <div class="moving-target" id="spideyTarget" onclick="hitSpideyTarget()">🕷️</div>
+        </div>
+
+        <p id="winMsg2" style="display:none; color: #55efc4; font-weight: bold; margin-top: 10px; font-size: 14px;">
+          🏆 REJA HERO SEJATI! Refleks kamu keren banget, berhasil selesaikan semua tantangan! 👑🔥
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let score = 0;
+    let bossScore = 0;
+    let moveInterval = null;
+
+    function goToStep(step) {
+      document.getElementById('step1').style.display = 'none';
+      document.getElementById('step2').style.display = 'none';
+      document.getElementById('step3').style.display = 'none';
+      document.getElementById('step4').style.display = 'none';
+
+      if (step === 2) document.getElementById('step2').style.display = 'block';
+      if (step === 3) document.getElementById('step3').style.display = 'block';
+      if (step === 4) {
+        document.getElementById('step4').style.display = 'block';
+        startBossGame();
+        var audio = document.getElementById('bgMusic');
+        if(audio) { audio.play(); }
+      }
+    }
+
+    function catchHeart() {
+      if (score < 10) {
+        score++;
+        document.getElementById('scoreText').innerText = score;
+        const icons = ['🤍', '🕷️', '🕸️', '💙', '✨', '🎂'];
+        document.getElementById('targetBtn').innerText = icons[Math.floor(Math.random() * icons.length)];
+
+        if (score === 10) {
+          document.getElementById('winMsg1').style.display = 'block';
+          document.getElementById('targetBtn').innerText = '👑';
+        }
+      }
+    }
+
+    function startBossGame() {
+      moveTargetRandom();
+      if(!moveInterval) {
+        moveInterval = setInterval(moveTargetRandom, 900);
+      }
+    }
+
+    function moveTargetRandom() {
+      const area = document.getElementById('bossGameArea');
+      const target = document.getElementById('spideyTarget');
+      if(!area || !target) return;
+
+      const maxX = area.clientWidth - 45;
+      const maxY = area.clientHeight - 45;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      target.style.left = randomX + 'px';
+      target.style.top = randomY + 'px';
+    }
+
+    function hitSpideyTarget() {
+      if (bossScore < 5) {
+        bossScore++;
+        document.getElementById('bossScore').innerText = bossScore;
+        moveTargetRandom();
+
+        if (bossScore === 5) {
+          clearInterval(moveInterval);
+          document.getElementById('winMsg2').style.display = 'block';
+          document.getElementById('spideyTarget').innerText = '🏆';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
